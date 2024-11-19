@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class ClansMapper {
 
     public ClansResponseDto toClansResponseDto(Clans clans){
-        return new ClansResponseDto(clans.getClan_name(), clans.getZone());
+        return new ClansResponseDto(clans.getClan_name(), clans.getZone(),clans.getAffiliation().getAffiliation_id());
     }
 
     public Clans toClans(ClansDto dto){

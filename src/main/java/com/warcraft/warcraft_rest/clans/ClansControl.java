@@ -52,15 +52,16 @@ public class ClansControl {
     public ResponseEntity<?> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException exp
     ){
-        var erros = new HashMap<String,String>();
+        var errors = new HashMap<String,String>();
         exp.getBindingResult()
                 .getAllErrors()
                 .forEach(error ->{
-                    var fieldName =((FieldError) error).getField();
+                    var fieldName = ((FieldError) error).getField();
                     var errorMessage = error.getDefaultMessage();
-                    erros.put(fieldName, errorMessage);
+                    errors.put(fieldName,errorMessage);
                 });
-        return new ResponseEntity<>(erros, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+
     }
 
 }
